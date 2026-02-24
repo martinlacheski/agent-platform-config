@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "_notes": [
+    "Template only. Replace placeholder values with your own settings.",
+    "Some keys may vary by OpenCode version; check local docs with 'opencode --help' and your current config schema."
+  ],
+  "plugin": [
+    "<OPTIONAL_PLUGIN_PACKAGE>@<VERSION>"
+  ],
+  "provider": {
+    "<PROVIDER_KEY>": {
+      "models": {
+        "<MODEL_ID>": {
+          "name": "<DISPLAY_NAME>",
+          "_example": "Use your provider-specific model identifier"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "engram": {
+      "type": "local",
+      "command": [
+        "engram",
+        "mcp"
+      ],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    }
+  },
+  "agent": {
+    "default": {
+      "mode": "primary",
+      "description": "<YOUR_AGENT_DESCRIPTION>",
+      "prompt": "<YOUR_AGENT_SYSTEM_PROMPT>",
+      "tools": {
+        "read": true,
+        "edit": true,
+        "write": true
+      }
+    }
+  }
+}
