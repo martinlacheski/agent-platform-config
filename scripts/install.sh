@@ -8,14 +8,16 @@ TARGET_ROOT="${OPENCODE_CONFIG_DIR:-$HOME/.config/opencode}"
 BACKUP_PARENT="${OPENCODE_BACKUP_DIR:-$HOME/.config/opencode-backups}"
 TIMESTAMP="$(date +%Y%m%d-%H%M%S)"
 
+DO_UPDATE=false
 DO_SYNC=false
 SYNC_PATH=""
 
 usage() {
   cat <<'EOF'
-Usage: scripts/install.sh [--sync [PROJECT_PATH]] [--target TARGET_DIR]
+Usage: scripts/install.sh [--update] [--sync [PROJECT_PATH]] [--target TARGET_DIR]
 
 Options:
+  --update               Update from upstream repositories (agent-teams-lite & engram) before install
   --sync [PROJECT_PATH]  Run sync after install (default PROJECT_PATH: current dir)
   --target TARGET_DIR    Override install target (default: ~/.config/opencode)
   -h, --help             Show help
@@ -24,6 +26,9 @@ EOF
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --update)
+      DO_UPDATE=true
+      ;;
     --sync)
       DO_SYNC=true
       next_arg="${2:-}"
@@ -52,6 +57,11 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
+
+if [[ "$DO_UPDATE" == true ]]; then
+  echo "Running upstream update..."
+  "$REPO_ROOT/scripts/sync-upstream.sh"
+fi
 
 if [[ ! -f "$REPO_ROOT/AGENTS.md" ]]; then
   echo "Error: AGENTS.md not found in repository root: $REPO_ROOT" >&2
