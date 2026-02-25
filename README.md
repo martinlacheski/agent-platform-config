@@ -47,10 +47,11 @@ cd agent-platform-config
 **What this automated setup does:**
 1. 🔄 Clones or updates `agent-teams-lite` and `engram` from GitHub (in `.upstream/`).
 2. 📦 Copies the latest SDD (`sdd-*`) skills into your local `skills/` folder.
-3. 🧠 Installs the `engram` binary automatically (using `brew` or `go` if needed).
-4. 📂 Installs `AGENTS.md`, `skills/`, and `scripts/` into `~/.config/opencode`.
-5. 📄 Copies the `opencode.json` template to `~/.config/opencode/opencode.json` (if it doesn't exist).
-6. 🔌 Registers the Engram MCP server automatically by running `engram setup opencode`.
+3. 🍺 Installs `Homebrew` automatically if it's not present on your system.
+4. 🧠 Installs the `engram` binary automatically (using `brew` or `go` if needed).
+5. 📂 Installs `AGENTS.md`, `skills/`, and `scripts/` into `~/.config/opencode`.
+6. 📄 Copies the `opencode.json` template to `~/.config/opencode/opencode.json` (if it doesn't exist).
+7. 🔌 Registers the Engram MCP server automatically by running `engram setup opencode`.
 
 If existing configurations are found, `install.sh` creates a timestamped backup under `~/.config/opencode-backups/`.
 

@@ -110,6 +110,17 @@ if [[ ! -f "$TARGET_ROOT/opencode.json" ]] && [[ -f "$REPO_ROOT/templates/openco
   cp -a "$REPO_ROOT/templates/opencode.json" "$TARGET_ROOT/opencode.json"
 fi
 
+# Try to load brew into PATH if engram is missing but brew might have just been installed
+if ! command -v engram &> /dev/null; then
+  if [ -x "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  elif [ -x "/usr/local/bin/brew" ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
 if command -v engram &> /dev/null; then
   echo "🔌 Registering engram MCP server in OpenCode..."
   engram setup opencode || true

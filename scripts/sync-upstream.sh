@@ -34,6 +34,21 @@ fi
 
 if ! command -v engram &> /dev/null; then
     echo "⚠️  'engram' no está instalado. Intentando instalar..."
+    
+    if ! command -v brew &> /dev/null; then
+        echo "🍺 Homebrew no encontrado. Instalando Homebrew automáticamente..."
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+        # Cargar brew en la sesión actual
+        if [ -x "/opt/homebrew/bin/brew" ]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        elif [ -x "/usr/local/bin/brew" ]; then
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+    fi
+
     if command -v brew &> /dev/null; then
         echo "Usando Homebrew para instalar engram..."
         brew install gentleman-programming/tap/engram
@@ -41,7 +56,7 @@ if ! command -v engram &> /dev/null; then
         echo "Usando Go para compilar e instalar engram..."
         (cd "$UPSTREAM_DIR/engram" && go install ./cmd/engram)
     else
-        echo "❌ No se encontró 'brew' ni 'go'."
+        echo "❌ Falló la instalación de Homebrew y no se encontró 'go'."
         echo "Por favor, instala engram manualmente:"
         echo "  brew install gentleman-programming/tap/engram"
     fi
