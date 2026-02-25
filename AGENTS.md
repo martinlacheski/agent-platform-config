@@ -31,9 +31,10 @@ You can keep one source of truth globally and expose it per project as `AGENTS.m
 | Angular components/signals/control flow | `angular-core` | `angular-forms`, `angular-performance` |
 | Angular forms/validation | `angular-forms` | `angular-core` |
 | Angular performance/lazy loading/SSR | `angular-performance` | `angular-architecture` |
-| React app/component work | `react-19` | `typescript`, `tailwind-4`, `zustand-5`, `ai-sdk-5` |
+| React app/component work | `react-19` | `typescript`, `tailwind-4`, `zustand-5`, `ai-sdk-5`, `shadcn-custom` |
 | React Native mobile work | `react-native` | `typescript` |
-| Next.js App Router work | `nextjs-15` | `react-19`, `tailwind-4`, `ai-sdk-5`, `zod-4`, `typescript` |
+| Next.js App Router work | `nextjs-15` | `react-19`, `tailwind-4`, `ai-sdk-5`, `zod-4`, `typescript`, `shadcn-custom` |
+| Custom UI & Shadcn | `shadcn-custom` | `react-19`, `tailwind-4` |
 | AI chat/product features | `ai-sdk-5` | `nextjs-15`, `react-19`, `zod-4` |
 | Tailwind styling/system tokens | `tailwind-4` | `react-19`, `nextjs-15` |
 | Zod schema validation | `zod-4` | `typescript` |
@@ -78,6 +79,7 @@ When performing these actions, ALWAYS invoke the corresponding skill first:
 | Creating Zod schemas | `zod-4` |
 | Using Zustand stores | `zustand-5` |
 | Working with Tailwind classes | `tailwind-4` |
+| Using/Adding Shadcn components | `shadcn-custom` |
 | Creating Jira task | `jira-task` |
 | Creating Jira epic | `jira-epic` |
 | Creating PR / PR description | `github-pr` |
