@@ -33,11 +33,18 @@ else
 fi
 
 if ! command -v engram &> /dev/null; then
-    echo "⚠️  'engram' no está instalado."
-    echo "Para instalarlo, puedes ejecutar:"
-    echo "  brew install gentleman-programming/tap/engram"
-    echo "O compilarlo desde el código fuente:"
-    echo "  cd \"$UPSTREAM_DIR/engram\" && go install ./cmd/engram"
+    echo "⚠️  'engram' no está instalado. Intentando instalar..."
+    if command -v brew &> /dev/null; then
+        echo "Usando Homebrew para instalar engram..."
+        brew install gentleman-programming/tap/engram
+    elif command -v go &> /dev/null; then
+        echo "Usando Go para compilar e instalar engram..."
+        (cd "$UPSTREAM_DIR/engram" && go install ./cmd/engram)
+    else
+        echo "❌ No se encontró 'brew' ni 'go'."
+        echo "Por favor, instala engram manualmente:"
+        echo "  brew install gentleman-programming/tap/engram"
+    fi
 else
     echo "✅ 'engram' ya se encuentra instalado ($(engram version 2>/dev/null || echo 'versión desconocida'))."
 fi

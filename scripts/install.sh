@@ -105,7 +105,17 @@ cp -a "$REPO_ROOT/skills" "$TARGET_ROOT/skills"
 cp -a "$REPO_ROOT/scripts" "$TARGET_ROOT/scripts"
 chmod +x "$TARGET_ROOT/scripts"/*.sh
 
-echo "Installed OpenCode config to: $TARGET_ROOT"
+if [[ ! -f "$TARGET_ROOT/opencode.json" ]] && [[ -f "$REPO_ROOT/templates/opencode.json" ]]; then
+  echo "📄 No opencode.json found in $TARGET_ROOT. Copying template..."
+  cp -a "$REPO_ROOT/templates/opencode.json" "$TARGET_ROOT/opencode.json"
+fi
+
+if command -v engram &> /dev/null; then
+  echo "🔌 Registering engram MCP server in OpenCode..."
+  engram setup opencode || true
+fi
+
+echo "✅ Installed OpenCode config to: $TARGET_ROOT"
 if [[ "$created_backup" == true ]]; then
   echo "Backup created at: $BACKUP_ROOT"
 else
