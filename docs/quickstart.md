@@ -22,7 +22,7 @@ cd /home/martin/Code/agent-platform-config
 ## 4) Add OpenCode runtime template
 
 ```bash
-cp /home/martin/Code/agent-platform-config/templates/opencode.json ~/.config/opencode/templates/opencode.json
+cp /home/martin/Code/agent-platform-config/templates/opencode.json ~/.config/opencode/opencode.json
 ```
 
 Edit placeholders in your active OpenCode config and enable Engram MCP.
@@ -32,5 +32,5 @@ Edit placeholders in your active OpenCode config and enable Engram MCP.
 ```bash
 opencode --help
 engram --help
-engram mcp --help
+engram mcp
 ```
