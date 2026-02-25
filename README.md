@@ -91,3 +91,13 @@ Also syncs files into project root and `.agent/` for tooling that expects local 
 - Agent Teams Lite: https://github.com/Gentleman-Programming/agent-teams-lite
 
 See `docs/` for full setup instructions and validation commands.
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details. 
+
+**Acknowledgments:**
+This repository integrates concepts, patterns, and files (such as the SDD skills) derived from the open-source projects created by [Gentleman Programming](https://github.com/Gentleman-Programming). Both upstream projects are freely available:
+- [Engram](https://github.com/Gentleman-Programming/engram) (MIT License)
+- [Agent Teams Lite](https://github.com/Gentleman-Programming/agent-teams-lite) (MIT License)
+
+Feel free to use, modify, and distribute this configuration bundle as you see fit!
